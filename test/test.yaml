@@ -1,34 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-test
+  name: my-python
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: my-test
+      app: my-python
   template:
     metadata:
       labels:
-        app: my-test
+        app: my-python
     spec:
       containers:
-      - name: my-test
-        image: techdocker24/html-app:1.0
+      - name: my-python
+        image: techdocker24/python
         ports:
-        - containerPort: 80
+        - containerPort: 8000
 
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-test
+  name: my-python
 spec:
   selector:
-    app: my-test
+    app: my-python
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 80
+    port: 8000
+    targetPort: 8000
   type: NodePort
